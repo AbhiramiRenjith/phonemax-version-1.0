@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <!-- <span class="navbar-toggler-icon"></span> -->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+  <!-- welcome>>{{user.username}} -->
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div>
+        <table class="table" style="margin-top: 100px;">
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in data %}
+            <tr>
+              <td><img src="{{ i.product.image1.url }}" height="100px" alt="" style= "width:100px;" ></td>
+                      <td>{{i.product.product_name}}</td>
+                      <td>₹ {{i.product.price}}</td>
+                      <td>₹ {{  i.product.price  }}</td>
+                      <td>{{i.quantity}}</td>
+                      {% if i.ordered is False %}
+                      <td>{{ i.status }}</td> 
+                      <td><button class="btn-success" ><a href="/user_order_detailed_view/{{i.id}}" style="text-decoration: None;color: white;">View More</a></button>
+                        {% if i.status != "Delivered" %}
+           
+                        <td><a  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModalToggle{{ i.id }}" type="button" style="margin-left: -30px;">Cancel</a></td>
+                        {% endif %}</td>
+                      {% elif i.ordered is True %}
+                      <td style="color: red;">{{ "Cancelled" }}</td>
+                      {% endif %}
+
+
+                <div class="modal fade" id="exampleModalToggle{{ i.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="height: 200px;">
+                      <div class="d-flex justify-content-end">
+                        <button type="button" class="btn-close py-2 px-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body container" style="margin-left:130px;">
+                       Do you want to Cancel?
+                      </div>
+                      <div class="d-flex justify-content-end  py-2">
+                          
+                          <a href="/user_cancel_order/{{i.id}}" style="text-decoration: None;" class="px-4"><button class="btn btn-primary px-5">ok</button></a>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- 
+     
+          
+          
+         -->
+      </div>
+
+
+
+
+        
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="page-heading header-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>My Profile</h1>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <section class="h-100 gradient-custom-2">
+          <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col col-lg-9 col-xl-7">
+                <!-- <div class="card">
+                  <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                    
+                    
+                  </div> -->
+                  
+                  <div class="card-body p-4 text-black">
+                    <form method="post">
+                      {% csrf_token %}
+                      <button class="filled-button btn-success"><a href="/user_order_management" style="text-decoration: none;color: white;">View Orders</a></button>
+                      <button class="filled-button btn-success"><a href="/view_cart" style="text-decoration: none;color: white;">My Cart</a></button>
+                      <button class="filled-button btn-success"><a href="/view_wishlist" style="text-decoration: none;color: white;">Wishlist</a></button>
+                      <button class="filled-button btn-success"><a href="/address_management" style="text-decoration: none;color: white;">Address management</a></button>
+                      <button class="filled-button btn-success"><a href="/edit_profile/{{data.id}}" style="text-decoration: none;color: white;">Edit Profile</a></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      
+  
+      <!-- Footer Starts Here -->
+
+
+
+        
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'asset/css/fontawesome.css' %}">
+<link rel="stylesheet" href="{% static 'asset/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'asset/css/owl.css' %}">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <div style="margin-left:300px;">
+          <form class="d-flex" role="search" method="POST">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">&nbsp;
+              <button class="btn btn-outline-success" style="height: 40px"  type="submit" >Search</button>
+            </form>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner" style="margin-top: 80px;">
+      <div class="carousel-item active">
+        <img src="{% static 'images/2.webp' %}" class="d-block w-100" alt="slide 1">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/3.jpg' %}" class="d-block w-100" alt="slide 2">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/33.jpg' %}" class="d-block w-100" alt="slide 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- welcome>>{{user.username}} -->
+
+  <div class="container">
+    <div class="row">
+  {% for i in data %}
+                    <div class="col-md-3">
+                        <div class="card text-center border-2  " style="height:340px;margin-top:20px;">
+                            <div class="card-body">
+                  
+                                <img width=160px; height=170px; src="images/{{i.image1}}">
+                                </a>
+                                <h1 style="font-size:20px;">{{i.product_name}}</h1><br>
+                               
+                                <p class="card-text">
+                                   
+                                    
+                                </p>
+                                <h4 class="price" style="margin-top:-10px;font-size:20px;color:gray;">₹{{i.price}}</h4>
+                                <h6  class="details text-dark" style="margin-top:10px;">{{i.ram}}GB Ram|{{i.storage}}GB Rom</h6>
+                                
+                                    
+                            
+                                <button class="btn btn-primary"><a href="/product_details/{{i.id}}"><b style="color:white;">View More</b></a></button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+</div>
+
+
+
+           <!-- Footer Starts Here -->
+           <footer>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 footer-item">
+                  <h4>PhoneMax</h4>
+                  <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia sapien vitae.</p>
+                  <ul class="social-icons">
+                    <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3 footer-item">
+                  <h4>Useful Links</h4>
+                  <ul class="menu-list">
+                    <li><a href="#">Vivamus ut tellus mi</a></li>
+                    <li><a href="#">Nulla nec cursus elit</a></li>
+                    <li><a href="#">Vulputate sed nec</a></li>
+                    <li><a href="#">Cursus augue hasellus</a></li>
+                    <li><a href="#">Lacinia ac sapien</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3 footer-item">
+                  <h4>Additional Pages</h4>
+                  <ul class="menu-list">
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Terms</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3 footer-item last-item">
+                  <h4>Contact Us</h4>
+                  <div class="contact-form">
+                    <form id="contact footer-contact" action="" method="post">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <fieldset>
+                            <input name="name" type="text" class="form-control" id ="name" placeholder="Full Name" required="">
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <fieldset>
+                            <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+          
+          <div class="sub-footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <p>
+                      Copyright © 2020 Company Name
+                      - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        
+
+{% endblock %}

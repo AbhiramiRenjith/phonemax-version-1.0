@@ -1,0 +1,209 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <!-- <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/register">Register</a>
+          <a class="nav-link active" href="/user_login">Login</a>
+          <a class="nav-link active" href="/">LogOut</a> -->
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout">Logout</a>
+         
+    
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<!-- molla/product.html  22 Nov 2019 09:54:50 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Molla - Bootstrap eCommerce Template</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/favicon.ico' %}">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/nouislider/nouislider.css' %}">
+</head>
+
+
+<body>
+    
+
+                   
+                
+                     
+
+        <main class="main" style="margin-top:100px;">
+            <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+                <div class="container d-flex align-items-center">
+                    
+
+                    <nav class="product-pager ml-auto" aria-label="Product">
+                        <a class="product-pager-link product-pager-prev" href="#" aria-label="Previous" tabindex="-1">
+                            <i class="icon-angle-left"></i>
+                            <span>Prev</span>
+                        </a>
+
+                        <a class="product-pager-link product-pager-next" href="#" aria-label="Next" tabindex="-1">
+                            <span>Next</span>
+                            <i class="icon-angle-right"></i>
+                        </a>
+                    </nav><!-- End .pager-nav -->
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+
+
+
+            <div class="page-content">
+                <div class="container">
+                    <div class="product-details-top">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="product-gallery product-gallery-vertical">
+                                    <div class="row">
+                                        <figure class="product-main-image">
+        
+                                            <img id="product-zoom" src="/images/{{data.image1}}" data-zoom-image="/images/{{data.image1}}" alt="product image">
+
+                                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                                <i class="icon-arrows"></i>
+                                            </a>
+                                        </figure><!-- End .product-main-image -->
+
+                                        <div id="product-zoom-gallery" class="product-image-gallery">
+                                            <a class="product-gallery-item" href="#" data-image="/images/{{data.image1}}" data-zoom-image="/images/{{data.image1}}">
+                                                <img src="/images/{{data.image1}}" alt="product side">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="/images/{{data.image2}}" data-zoom-image="/images/{{data.image2}}">
+                                                <img src="/images/{{data.image2}}" alt="product cross">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="/images/{{data.image3}}" data-zoom-image="/images/{{data.image3}}">
+                                                <img src="/images/{{data.image3}}" alt="product with model">
+                                            </a>
+
+                                            <a class="product-gallery-item" href="#" data-image="/images/{{data.image4}}" data-zoom-image="/images/{{data.image4}}">
+                                                <img src="/images/{{data.image4}}" alt="product back">
+                                            </a>
+                                        </div><!-- End .product-image-gallery -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product-gallery -->
+                            </div><!-- End .col-md-6 -->
+
+                            <div class="col-md-4" style="margin-top: 100px;margin-left:50px;">
+                                <div class="sidebar-item recent-posts">
+                                  <div class="sidebar-heading">
+                                    <h4>{{ data.product_name }}&nbsp;&nbsp;<br>
+                                      {% if data.actual_price != data.price %}
+                                      <del>(₹{{ data.actual_price }})</del>
+                                      {% endif %}
+                                      (₹{{ data.price }})</h4><br>
+                                  </div>
+                    
+                                  <div class="content">
+                                    
+                                  </div>
+                                </div>
+                                <div class="sidebar-item recent-posts">
+                                  <div class="sidebar-heading">
+                                    <h5>Description</h5>
+                                  </div>
+                                  <div class="content">
+                                    <p>{{ data.p_description }}</p>
+                                  </div>
+                                </div>
+                                <div>{{data.ram}}GB + {{data.storage}}GB</div>
+                                
+
+
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                          
+                                        <div class="row">
+                                          <div class="col-md-6 col-sm-12">
+                                            
+                                          </div>
+                                          <div class="col-lg-12">
+                                            <div class="form-group">
+                                              <input type="submit" name="cart_button" class="filled-button " value="Add to Cart" style="background-color: blue;border-color:blue;color:white;margin-top:30px ;">
+                                              <input type="submit" name="wishlist_button" class="filled-button btn-success" value="Add to wishlist" style="margin-left:20px ;">
+                                            
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form>
+
+                              
+
+                                        
+
+<!--                                     
+                                       <button  style="width:200px;height: 50px;background-color: rgb(79, 79, 216);border-color:rgb(79, 79, 216) ;"><a href="/add_to_cart/{{pro.id}}" class="btn-product btn-cart"><span style="font-size:15px;color: white;" >add to cart</span></a></button>
+
+             
+                                    
+                                
+                                       <button class="btn-success" style="width:200px;height: 50px;margin-left:30px ;"> <a href="/add_to_wishlist/1" class="btn-product btn-wishlist"><span style="font-size: 15px;color:white">Add to Wishlist</span></a></button> -->
+
+
+
+                                    
+                                    </div><!-- End .product-details-footer -->
+                                </div><!-- End .product-details -->
+                            </div><!-- End .col-md-6 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .product-details-top -->
+
+                   
+
+        
+
+    <!-- Plugins JS File -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.elevateZoom.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+
+{% endblock %}

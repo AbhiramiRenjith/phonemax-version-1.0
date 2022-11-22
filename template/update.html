@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5" style="width: 600px;">
+          <div class="card-body p-4 p-sm-5">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Edit Profile</h5>
+            <form method="post" name="myForm">
+                 {% csrf_token %}
+                <div class="form-floating mb-3">
+                  <label for="floatingInput">Name</label>
+                  <input type="text" name="username" class="form-control" id="floatingInput" value="{{ data.username }}" style="width:380px;margin-left:110px;">
+                  <span id="name_err" style="color:red">{% block n_err %}{% endblock %}</span>
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="floatingInput1">Email</label>
+                  <input type="email" name="email" class="form-control" id="floatingInput1" value="{{ data.email }}"  style="width:380px;margin-left:110px;" >
+                  <span id="email_err" style="color:red">{% block e_err %}{% endblock %}</span>
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="floatingInput2">phone</label>
+                  <input type="number" name="phone" class="form-control" id="floatingInput2" value="{{ data.phone }}" style="width:380px;margin-left:110px;" >
+                  <span id="uname_err" style="color:red">{% block u_err %}{% endblock %}</span>
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="floatingInput2">Password</label>
+                    <input type="text" name="password" class="form-control" id="floatingInput3" value="{{ data.password }}" style="width:380px;margin-left:110px;" >
+                    <span id="password_err" style="color:red">{% block p_err %}{% endblock %}</span>
+                    <span style="color:red">{% for i in messages %}{{i}}{% endfor %}</span>
+                </div>
+              <div class="d-grid">
+                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" onclick="return validate();">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+        
+
+{% endblock %}

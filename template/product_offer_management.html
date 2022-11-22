@@ -1,0 +1,354 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title></title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets copy/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets copy/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets copy/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets copy/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets copy/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets copy/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assets copy/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'assets copy/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets copy/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets copy/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.4.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<style>
+  .main1{
+    width:150px;
+    height:40px;
+    background-color:gray;
+    border-radius: 5px;
+    color: black;
+    padding-left:12px;
+    padding-top: 5px;
+    margin-top: 10px;
+    
+  }
+  .main2{
+    width:150px;
+    height:40px;
+    background-color:gray;
+    border-radius: 5px;
+    padding-left:12px;
+    padding-top: 5px;
+    margin-top: 10px;
+  }
+  .main3{
+    width:150px;
+    height:40px;
+    background-color: gray;
+    border-radius: 5px;
+    margin-top:10px;
+    padding-left:12px;
+    padding-top: 5px;
+  }
+  .main4{
+    width:150px;
+    height:40px;
+    background-color:gray;
+    border-radius: 5px;
+    margin-top:10px;
+    padding-left:12px;
+    padding-top: 5px;
+  }
+  .main5{
+    width:150px;
+    height:40px;
+    background-color:gray;
+    border-radius: 5px;
+    margin-top:10px;
+    padding-left:12px;
+    padding-top: 5px;
+  }
+  .main6{
+    width:150px;
+    height:40px;
+    background-color:red;
+    border-radius: 5px;
+    margin-top:10px;
+    padding-left:12px;
+    padding-top: 5px;
+  }
+  .main7{
+    width:150px;
+    height:40px;
+    background-color:gray;
+    border-radius: 5px;
+    margin-top:10px;
+    padding-left:12px;
+    padding-top: 5px;
+  }
+  .main8{
+    width:150px;
+    height:40px;
+    background-color:gray;
+    border-radius: 5px;
+    margin-top:10px;
+    padding-left:12px;
+    padding-top: 5px;
+  }
+  b{
+    color:white
+  }
+  .first{
+    margin-left: 50px;
+  }
+label{
+    margin-left: 100px;
+    margin-top:30px;
+    color: black;
+    font-size:18px;
+    font-family:sans-serif;
+    
+}
+input{
+    margin-left: 100px;
+    width: 250px;
+    height:35px;
+   
+
+    
+}
+
+.container{
+    width: 1200px;
+    height: 700px;
+    margin-left:300px;
+    margin-top:50px;
+
+}
+.btnn{
+    margin-left: 300px;
+    margin-top:50px;
+    width:80px;
+    height:30px;
+    background-color: blue;
+    color: white;
+    border-color: blue;
+   
+    
+    
+
+}
+.pri{
+    margin-left:165px;
+}
+.det{
+    margin-left:155px;
+    height:70px;
+}
+.con1{
+    margin-left: 200px;
+    padding-top:60px;
+}
+
+</style>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'assets copya/img/logo.png' %}" alt="">
+        <span class="d-none d-lg-block">ADMIN</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+    <div style="margin-left:800px;font-size:20px;">
+      <a href="/admin_logout">LogOut</a>
+    </div>
+
+
+
+    <!-- <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div> -->
+
+  
+        </li><!-- End Search Icon-->
+
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kevin Anderson</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <!-- <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>End Dashboard Nav -->
+
+
+
+<div class="first">
+  <div class="main1">
+    <a href='/admin_dash'><b>Dash</b></a>
+</div>
+
+  <div class="main2">
+         <a href='/admin_userinfo'><b>Users</b></a>
+    </div>
+   <div class="main3">
+          <a href='/admin_listproduct'><b>Products</b></a>
+    </div>     
+     <div class="main4">
+            <a href='/view_category'><b>Category</b></a>
+           
+      </div>
+   
+  <div class="main5">
+    <a href='/admin_order_management'><b>orders</b></a>
+   
+</div>
+<div class="main6">
+  <a href='/view_offers'><b>Offers</b></a>
+ 
+</div>
+<div class="main7">
+  <a href='/view_coupan'><b>Coupan</b></a>
+ 
+</div>
+<div class="main8">
+  <a href='/sales'><b>Sales</b></a>
+ 
+</div>
+</div>
+</ul>
+</aside>
+
+<div class="col py-3">
+  <div class="container" style="margin-left:250px ;">
+      <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+          <div class="card border-0 shadow rounded-3 my-5">
+            <div class="card-body p-4 p-sm-5" style="margin-top: -100px;">
+              <h5 class="card-title text-center mb-5 fw-light fs-5">Add Product Offer</h5>
+              <form method="post" name="myForm" enctype="multipart/form-data">
+                   {% csrf_token %}
+                   <div class="select-wrap">
+                      <div style="margin-left:50px;"><label>Product</label></div>
+                      <select name="c_code" style="width: 100%;">
+                          {% for i in category %}
+                          <option value="{{i.id}}">{{i.product_name}}{{i.storage}}</option>
+                          {% endfor%}
+                      </select>
+                    </div>
+                  <div class="form-floating mb-3" style="width: 200px;margin-top:15px ;">
+                    <label for="floatingInput1" style="margin-left:-10px;margin-top:-10px;">Start Date</label>
+                      <input type="date" name="s_date" class="form-control" id="floatingInput1" placeholder="Start Date and Time" >
+                      
+                      <span id="name_err" style="color:red">{% block n_err %}{% endblock %}</span>
+                  </div>
+                  <div class="form-floating mb-3" style="width: 200px;">
+                    <label for="floatingInput2" style="margin-left:-10px;margin-top:-10px;">End Date</label>
+                      <input type="date" name="e_date" class="form-control" id="floatingInput2" placeholder="End Date and Time" >
+                      
+                      <span id="description_err" style="color:red">{% block des_err %}{% endblock %}</span>
+                  </div>
+                  <div class="form-floating mb-3" style="width: 200px;">
+                    <label for="floatingInput4" style="margin-left:-50px;margin-top:-10px;">Disc Percentage</label>
+                      <input type="text" name="d_percentage" class="form-control" id="floatingInput4" min="0" max="70" placeholder="Discount Percentage" required>
+                      
+                      <span id="ram_err" style="color:red">{% block ram_err %}{% endblock %}</span>
+                      <span style="color:rgb(23, 201, 0)">{% for i in messages %}{{i}}{% endfor %}</span>
+                  </div>
+                <div class="d-grid">
+                  <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>

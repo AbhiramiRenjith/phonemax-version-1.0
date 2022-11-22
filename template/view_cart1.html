@@ -1,0 +1,219 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<script src="{% static '/js/jquery-3.6.1.min.js' %}" ></script>
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/gcart_view">Cart</a>
+          <a class="nav-link active" href="/insert">Register</a>
+          <a class="nav-link active" href="/user_login">Login</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+ 
+        
+                   
+  <div class="services">
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-9">
+              <table class="table" style="margin-top: 100px;">
+                  <thead>
+                    <tr align="center">
+                      <th scope="col">Image</th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Quantity</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for i in cart %}
+                    <tr align="center">
+                      <td><img src="{{ i.pid.image1.url }}" height="100px" alt="" style= "width:100px" ></td>
+                      <td>{{i.pid.product_name}}</td>
+                      <td>₹ {{i.pid.price}}</td>
+                      
+                        
+                      
+                      <td>
+                        <div class="product_data">
+                          {% csrf_token %}
+                          <input type="hidden" value="{{i.id}}" name="prod_id" class="prod_id">
+
+                        <span>
+                          <button class="changeQuantity  decrement-btn">
+                            -
+                          </button>
+                        <!-- <a  href="/add_quantity/{{i.id}}">+</a> -->
+                      </span>
+                      <!-- <span>&nbsp;&nbsp;<b>{{ i.quantity }}</b>&nbsp;&nbsp;</span> -->
+                      <input class="qty-input" type="text" style="border:none;text-align:center;background-color: #a6a8ab" value="{{i.qty}}" size="1">
+                        <span>
+                          <!-- <a  href="/sub_quantity/{{i.id}}">-</a> -->
+                          
+                          <button  id="increment-btn" class="changeQuantity increment-btn">
+                            +
+                          </button>
+                        </span>
+                      </div></td>
+                      <td>
+                        <button class="btn-danger"><a href="/gcart_remove/{{i.id}}" style="text-decoration: None;color: white;">Remove</a></button>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                    
+                  </tbody>
+                </table>
+                {% if cart %}{{ pass }}{% else %}
+          <div class="d-flex justify-content-center">
+            <img src="/static/preview.gif">
+          </div>
+         {% endif %}
+          </div>
+          <div class="col-3" >
+              <div class="card mb-4" style="margin-top: 100px;">
+                  <div class="card-header py-3">
+                    <h5 class="mb-0">Summary</h5>
+                  </div>
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                      <li
+                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                        Products
+                        <span>₹ {{ total }}</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                        Shipping
+                        <span>₹ 0</span>
+                      </li>
+                      <li
+                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                        <div>
+                          <strong>Total amount</strong>
+                          <strong>
+                            <p class="mb-0">(including GST)</p>
+                          </strong>
+                        </div>
+                        <span><strong>₹ {{ total }}</strong></span>
+                      </li>
+                    </ul>
+                    <form method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        Go to checkout
+                      </button>
+                    </form>
+                  </div>
+                </div>
+          </div>
+        
+      </div>
+
+      <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'asset/js/custom.js' %}"></script>
+      <script src="{% static 'asset/js/owl.js' %}"></script>
+      <script src="{% static 'asset/js/slick.js' %}"></script>
+      <script src="{% static 'asset/js/accordions.js' %}"></script>
+
+
+
+    <script>
+        var url = "/gcart_update/"
+        
+        $(document).ready(function(){
+           
+            $('.increment-btn').click(function(e){
+                e.preventDefault();
+                console.log("hello")
+                var inc_val = $(this).closest('.product_data').find('.qty-input').val();
+                // var inc_price = $(this).closest('.product_data').find('.price').val();
+                
+                console.log(inc_val)
+                // console.log(inc_price)
+                var value = parseInt(inc_val,10);
+                // var tot = parseInt(inc_price);
+                // console.log("print",total)
+               
+                value = isNaN(value) ? 0: value;
+                // var total = $(this).closest('.product_data').find('.prod_price').val();
+      
+                if(value < 6){
+                    value+=1;
+                    
+                    // total = parseInt(total)+tot
+                    // console.log("tot",typeof(total))
+                    // $('.sub').val(total)
+                    $(this).closest('.product_data').find('.qty-input').val(value);
+                    // $(this).closest('.product_data').find('.prod_price').val(total);
+                    
+                }
+            });
+      
+            $('.decrement-btn').click(function(e){
+                e.preventDefault();
+                console.log("decrement")
+                // var inc_price = $(this).closest('.product_data').find('.price').val();
+                var inc_val = $(this).closest('.product_data').find('.qty-input').val();
+                console.log(inc_val)
+                var value = parseInt(inc_val,10);
+                
+                // var tot = parseInt(inc_price);
+                //console.log("desc",tot)
+               
+               
+                value = isNaN(value) ? 0: value;
+              
+                
+                console.log("ok"+value)
+                if(value >1){
+                    value--;
+                   
+                
+                    $(this).closest('.product_data').find('.qty-input').val(value);
+                 
+                }
+            });
+             $('.changeQuantity').click(function(e){
+                e.preventDefault();
+                console.log('fetch')
+                var cart_id = $(this).closest('.product_data').find('.prod_id').val()
+                var product_qty = $(this).closest('.product_data').find('.qty-input').val()
+                console.log("qty",product_qty)
+                var token = $('input[name=csrfmiddlewaretoken]').val()
+                console.log(cart_id)
+                fetch(url,{
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'X-CSRFToken': token,
+                    },
+                    body: JSON.stringify({
+                        cart_id: cart_id,
+                        // total: total,
+                        product_qty: product_qty,
+                        
+                        
+                    }),
+                })
+            }) 
+        
+      
+        })
+      </script>    
+
+{% endblock %}

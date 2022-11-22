@@ -1,0 +1,97 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <!-- <span class="navbar-toggler-icon"></span> -->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body" style="margin-top:100px;">
+              <h5 class="card-title">Address</h5>
+              <p class="card-text">Name: {{ i.order.address.buyer_name }}</p>
+              <p class="card-text">Addres: {{ i.order.address.address }} {{ i.order.address.pincode }}</p>
+              <p class="card-text">City: {{ i.order.address.city }}</p>
+              <p class="card-text">State: {{ i.order.address.state }}</p>
+              <p class="card-text">Country: {{ i.order.address.country }}</p>
+              <p class="card-text">Order Date: {{ i.order.created_at }}</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <table class="table">
+                  <thead>
+                    <tr align="center">
+                      <th scope="col">Image</th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Total Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr align="center">
+                      <td><img src="{{ i.product.image1.url }}" height="100px" alt="" style= "width:100px;" ></td>
+                      <td>{{i.product.product_name}}</td>
+                      <td>₹ {{i.product.price}}</td>
+                      <td>₹ {% widthratio i.product.price 1 i.quantity %}</td>
+                      <td>{{i.quantity}}</td>
+                      {% if i.ordered is False %}
+                      <td>{{ i.status }}</td> 
+                      {% if i.status != "Delivered" %}
+                      <td><button class="btn-danger"><a href="/user_cancel_order/{{i.id}}" style="text-decoration: None;color: white;">Cancel</a></button>
+                        {% else %}
+                        <td><button><a href="/user_order_returned/{{i.id}}" style="text-decoration: None;font-size: 1500px;">Return</a></button>
+                          {% endif %}
+                      <button class="btn-primary"><a href="/download/{{i.id}}" style="text-decoration: None;color: white;">Save Invoice</a></button></td>
+                      {% elif i.ordered is True %}
+                      <td>{{ "Cancelled" }}</td>
+                      {% endif %}
+                      </td>
+                      
+                    </tr>
+                    
+                  </tbody>
+                </table>
+          </div>
+          
+        
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+
+
+        
+
+{% endblock %}

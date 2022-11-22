@@ -1,0 +1,70 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Address Management</h1>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-4">
+      <table class="table table-dark">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Pincode</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for data in data %}
+              <tr>
+                  <td>{{data.buyer_name}}</td>
+                  <td>{{data.buyer_phone}}</td>
+                  <td>{{data.address}}</td>
+                  <td>{{data.pincode}}</td>
+                  <td>{{data.city}}</td>
+                  <td>{{data.state}}</td>
+                  <td><a href="/delete_address/{{data.id}}"><button>Remove</button></a></td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+  
+
+
+
+
+        
+
+{% endblock %}

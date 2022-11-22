@@ -1,0 +1,138 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container ">
+      <a class="navbar-brand"href="#"><b style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:33px;"><i class="fa fa-cart-plus"></i>PhoneMax</b></a>
+      <!-- <div ><input type="search" placeholder="search products" style="margin-left:210px;width:300px;height:40px;border-color: rgb(249 241 241);border-radius:4px;"></div> -->
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" href="/products">Products</a>
+          <a class="nav-link active" href="/view_cart">Cart</a>
+          <a class="nav-link active" href="/myprofile">Myprofile</a>
+          <a class="nav-link active" href="/signout/">Logout</a>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <form method="post">
+    {% csrf_token %}
+  <div class="row">
+    <div class="col-9">
+        <table class="table" style="margin-top: 100px;">
+            <thead>
+              <tr align="center">
+                <th scope="col">Image</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+  
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for i in cart %}
+              <tr align="center">
+                <td><img src="{{ i.product.image1.url }}" height="100px;" alt="" style= "width:100px" ></td>
+                <td>{{i.product.product_name}}</td>
+                <td>₹ {{i.product.price}}</td>
+                <td><span>&nbsp;&nbsp;<b>{{ i.quantity }}</b>&nbsp;&nbsp;</span></td>
+                <td>{{i.user.name}}</td>
+                <!-- <td><button style="background-color:red ;border-color:red;"><a href="/delete_from_cart/{{i.id}}" style="text-decoration: None;color:white;">Remove</a></button></td> -->
+              </tr>
+            {% endfor %}
+              
+            </tbody>
+          </table>
+    </div>
+    <div class="col-3">
+        <div class="card mb-4" style="margin-top: 100px;">
+            <div class="card-header py-3">
+              <h5 class="mb-0">Summary</h5>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                  Products
+                  <span>₹ {{ total }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  Shipping
+                  <span>₹ 0</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                  <div>
+                    <strong>Total amount</strong>
+                    <strong>
+                      <p class="mb-0">(including TAX)</p>
+                    </strong>
+                  </div>
+                  <span><strong>₹ {{ total }}</strong></span>
+                </li>
+              </ul>
+              <button id="rzp-button1" style="width: 290px;background-color: green;border-color: green;height:35px;color: white;" >Pay</button>
+              </div>
+          </div>
+    </div>
+  
+</div >
+</form>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_LwvtAxokPKoVoO",
+    "amount": "{{ total }}", 
+    "currency": "INR",
+    "name": "MOBILESTORE",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{ payment.id }}", 
+    callback_url: "/razor_pay/{{Razorpay_payment_id}}",
+    redirect: true,
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+
+        
+
+{% endblock %}
