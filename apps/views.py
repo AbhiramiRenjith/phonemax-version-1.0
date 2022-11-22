@@ -1,9 +1,7 @@
 from urllib import response
 from django.shortcuts import render,redirect
 from django.contrib.auth import *
-import os
 from django.core.paginator import *
-import xlwt
 import datetime
 from django.http import HttpResponse
 from django.template.loader import *
@@ -12,7 +10,6 @@ from xhtml2pdf import pisa
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required
-from unicodedata import category
 from .models import *
 import random
 from .models import Users
