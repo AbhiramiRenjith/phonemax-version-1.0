@@ -1,12 +1,12 @@
 from urllib import response
 from django.shortcuts import render,redirect
 from django.contrib.auth import *
+import os
 from django.core.paginator import *
 import datetime
 from django.http import HttpResponse
 from django.template.loader import *
 from django.db.models import Count,Sum
-from xhtml2pdf import pisa
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required
@@ -17,7 +17,7 @@ from django.contrib import messages
 import datetime
 from django.core.paginator import *
 import io
-from xhtml2pdf import pisa
+from xhtml2pdf import pisa 
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
@@ -196,12 +196,6 @@ def admin_login(request):
 @never_cache
 @login_required(login_url=admin_login)
 def admin_dash(request):
-    # cod_count=Payment.objects.filter(payment_method='COD')
-    # paypal_count=Payment.objects.filter(payment_method='Paypal')
-    # razorpay_count=Payment.objects.filter(payment_method='razorpay')
-    # cod_payment_method_graph_data=cod_count
-    # paypal_payment_method_graph_data=paypal_count
-    # razorpay_payment_method_graph_data=razorpay_count
 
     users_count=Users.objects.all().count()
 
@@ -328,9 +322,7 @@ def admin_userinfo(request):
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
     return render(request, 'admin_userinfo.html',{'data':users})
-    # profile=Users.objects.all()
-    # return render(request,'admin_userinfo.html',{'profile':profile})  
-
+`z`
 
 def block(request,id):
     data=Users.objects.get(id=id)
