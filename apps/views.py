@@ -322,8 +322,7 @@ def admin_userinfo(request):
     except EmptyPage:
         users = paginator.page(paginator.num_pages)
     return render(request, 'admin_userinfo.html',{'data':users})
-`z`
-
+    
 def block(request,id):
     data=Users.objects.get(id=id)
     data.status=False
