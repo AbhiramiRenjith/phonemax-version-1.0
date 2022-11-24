@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'prp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'apps',
+        'NAME': 'phonemax',
         'USER':'abhi',
         'PASSWORD':'abhi@123',
         'HOST':'localhost',
