@@ -55,7 +55,7 @@
               <td><img src="{{ i.product.image1.url }}" height="100px" alt="" style= "width:100px;" ></td>
                       <td>{{i.product.product_name}}</td>
                       <td>₹ {{i.product.price}}</td>
-                      <td>₹ {{  i.product.price  }}</td>
+                      <td>₹ {% widthratio i.product.price 1 i.quantity %}</td>
                       <td>{{i.quantity}}</td>
                       {% if i.ordered is False %}
                       <td>{{ i.status }}</td> 

@@ -67,7 +67,7 @@
                         {% else %}
                         <td><button><a href="/user_order_returned/{{i.id}}" style="text-decoration: None;font-size: 1500px;">Return</a></button>
                           {% endif %}
-                      <button class="btn-primary"><a href="/download/{{i.id}}" style="text-decoration: None;color: white;">Save Invoice</a></button></td>
+                      <button class="btn-primary"><a href="/download/{{i.id}}" style="text-decoration: None;color: white;">Download Invoice</a></button></td>
                       {% elif i.ordered is True %}
                       <td>{{ "Cancelled" }}</td>
                       {% endif %}
