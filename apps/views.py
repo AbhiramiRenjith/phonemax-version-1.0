@@ -912,12 +912,15 @@ def render_to_pdf(template_src, context_dict):
 
 def download(request,productID):
     v=OrderProduct.objects.get(id=productID)
+    totalprice=v.product.price *v.quantity
     mydict={
         'customerName':v.user.username,
         'customerEmail':v.user.email,
         'customerMobile':v.user.phone,
         'shipmentAddress':v.order.address.address,
         'orderStatus':v.status,
+        'quantity':v.quantity,
+        'totalprice':totalprice,
         'productimage':v.product.image1,
         'productName':v.product.product_name,
         'productPrice':v.product.price,
